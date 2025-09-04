@@ -8,9 +8,41 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 class PasswordValidatorTest {
 
     // TODO: Replace these lines with your tests
+    PasswordValidator password = new PasswordValidator();
     @Test
-    void exampleTest(){
-        assertEquals(4, 2 + 1);
+    void testTieneMasDeOchoCaracteres(){
+        assertFalse(password.isValid("abc"));
+        assertTrue(password.isValid("Qwertyui1!"));
+    }
+
+    @Test
+    void testConMayusculas(){
+        assertFalse(password.isValid("qwertyui"));
+        assertTrue(password.isValid("Qwertyui1!"));
+    }
+
+    @Test
+    void testConMinusculas(){
+        assertFalse(password.isValid("QWERTYUI"));
+        assertTrue(password.isValid("Qwertyui1!"));
+    }
+
+    @Test
+    void testConNumero(){
+        assertFalse(password.isValid("qwertyui"));
+        assertTrue(password.isValid("Qwertyui1!"));
+    }
+
+    @Test
+    void testConCaracterEspecial(){
+        assertFalse(password.isValid("qwertyui"));
+        assertTrue(password.isValid("Qwertyui1!"));
+    }
+
+    @Test
+    void testConTodo(){
+        assertFalse(password.isValid("a"));
+        assertTrue(password.isValid("Qwertyui1!"));
     }
 
 //    Missing tests:
